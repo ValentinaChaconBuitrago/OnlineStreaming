@@ -40,3 +40,4 @@ def initiate():
 	        #sock.sendto("quit".encode('utf-8'), server_address)
 	        print("Quitting")
 	        break
+initiate()
