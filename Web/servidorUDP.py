@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
-# For debugging :
-# - run the server and remember the IP of the server
-# And interact with it through the command line:
-# echo -n "get" > /dev/udp/192.168.0.39/1080
-# echo -n "quit" > /dev/udp/192.168.0.39/1080
-
 import socket
 import cv2
 import sys
@@ -23,12 +16,12 @@ import sys
 host = "127.0.0.1"
 
 #20001
-port = int(input('Inserte el puerto en el que desea escuchar conexiones (e.g: 20001,20002,20003): '))
+port = int(input('Ingrese el puerto en el que desea escuchar conexiones (e.g: 20001,20002,20003): '))
 
 #Direccion donde estan guardados los archivos de video del servidor
-# "/Users/Valentina/Desktop/UDPStreaming/videos/"
-dir_video = "/Users/Valentina/Desktop/UDPStreaming/videos/blooming.mp4"
-
+# "/Users/Valentina/Desktop/OnlineStreaming/Web/videos/"
+dir_video = "/Users/Valentina/Desktop/OnlineStreaming/Web/videos/"
+nom_video = input('Ingrese el nombre del archivo de video que desea transmitir: ')
 #Indica si se inicia o no la transmision
 running = True
 
@@ -56,7 +49,7 @@ class VideoGrabber(Thread):
                 """
                 Thread.__init__(self)
                 self.encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), jpeg_quality]
-                self.cap = cv2.VideoCapture(dir_video)
+                self.cap = cv2.VideoCapture(dir_video + nom_video)
                 self.running = True
                 self.buffer = None
                 self.lock = Lock()
